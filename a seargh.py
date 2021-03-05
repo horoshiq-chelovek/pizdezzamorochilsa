@@ -1,30 +1,21 @@
-vubor = 0
-idc = 1
-eno = 0
-dire = 1
-cufra = 0
-text = ''
-inref = ''
-while idc == 1:
-    print('   ')
-    print('1 = directory',dire)
-    print('2 = start')
-    vubor = input(': ')
-    if vubor == '1':
-        dire = 1
-    if vubor == '2':
-        idc = 0
-if dire == 1:
-    vubor = input('расположение файла =:')
-    f = open(vubor)
-for l in f:
-    inref += l
-vubor = input('буква: ')
-idc = 0
-while idc < len(inref):
-    if inref[idc] == vubor:
-        cufra += 1
-        text += vubor
-    idc += 1
-print(vubor,'=',cufra)
-print(text)
+import socket
+
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("gmail.com",80))
+ip = s.getsockname()[0]
+s.close()
+
+
+
+def scan_port(ip,port):
+  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  sock.settimeout(0.5)
+  try:
+     connect = sock.connect((ip,port))
+     print('Port :',port,' its open.')
+     connect.close()
+  except:
+     pass
+ip = '185.3.68.225'
+for i in range(1000):
+  scan_port(ip,i)
